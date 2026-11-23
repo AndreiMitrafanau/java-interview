@@ -1,5 +1,8 @@
 package org.example.modernjava;
 
+import java.util.HashMap;
+import java.util.HashSet;
+
 /**
  * You are given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
  * You may assume that each input would have exactly one solution, and you may not use the same element twice.
@@ -15,7 +18,7 @@ package org.example.modernjava;
  *
  */
 public class TwoSum {
-    public int[] twoSum(int[] nums, int target) {
+    public int[] twoSumBrute(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
                 if (target == nums[i] + nums[j]) {
@@ -24,5 +27,17 @@ public class TwoSum {
             }
         }
         return new int[]{};
+    }
+
+    public int[] twoSum(int[] nums, int target) {
+        var seen = new HashMap<Integer, Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            var n = seen.get(target-nums[i]);
+            if (n != null) {
+                return new int[] {n, i};
+            } else
+                seen.put(nums[i], i);
+        }
+        throw new IllegalArgumentException("No two sum solution");
     }
 }
