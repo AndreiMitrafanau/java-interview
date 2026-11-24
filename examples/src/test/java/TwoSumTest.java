@@ -1,4 +1,4 @@
-import org.example.modernjava.TwoSum;
+import org.example.TwoSum;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
